@@ -32,6 +32,8 @@ window.onload = function () {
             displayResult(result);
         });
     });
+
+    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
 }
 
 function incrementValue(value) {
