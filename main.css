@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 26px 0 20px 0;
+}
+
+p {
+    text-align: center;
+    margin: 0 0 8px 0;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    margin: 2px 8px;
+    font-size: 150%;
+    user-select: none;
+}
+
+.ms {
+    height: 30px;
+    width: 50px;
+    margin: 16px 6px;
+    font-size: 150%;
+    text-align: center;
+}
+
+.ms::-webkit-inner-spin-button,
+.ms::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+span {
+    width: 3em;
+    text-align: center;
+}
+
+.res {
+    font-size: 150%;
+}
