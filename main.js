@@ -75,7 +75,7 @@ function calcValues() {
         return res;
     }
     function calcRatio() {
-        const res = Math.floor((calcEffectiveValue() / 100 + 1) * 1000) / 1000;
+        const res = Math.round((calcEffectiveValue() / 100 + 1) * 1000) / 1000;
         return res;
     }
 }
