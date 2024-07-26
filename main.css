@@ -41,6 +41,10 @@ button {
     margin: 0;
 }
 
+.ld {
+    color: #f00 !important;
+}
+
 span {
     width: 3em;
     text-align: center;

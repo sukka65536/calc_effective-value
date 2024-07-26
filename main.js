@@ -1,3 +1,5 @@
+const minVal = 10; maxVal = 160;
+
 window.onload = function () {
     const btns = document.querySelectorAll('.btn');
     const mbrs = document.querySelectorAll('.ms');
@@ -7,16 +9,9 @@ window.onload = function () {
             const btnNum = Number(this.value);
             const elem = document.getElementById('m' + (btnNum % 5));
             const val = Number(elem.value);
-
-            if (btnNum < 5){
-                elem.value = incrementValue(val);
-                if (elem.value >= 160) this.disabled = true;
-                document.getElementById('b' + (btnNum + 5)).disabled = false;
-            } else {
-                elem.value = decrementValue(val);
-                if (elem.value <= 10) this.disabled = true;
-                document.getElementById('b' + (btnNum - 5)).disabled = false;
-            }
+            
+            elem.value = (btnNum < 5) ? incrementValue(val) : decrementValue(val);
+            checkValue(elem.value, btnNum);
             const result = calcValues();
             displayResult(result);
         });
@@ -26,24 +21,31 @@ window.onload = function () {
         mbr.addEventListener('input', function () {
             const val = this.value;
             const mbrNum = Number(this.name);
-            document.getElementById('b' + mbrNum).disabled = (val >= 160);
-            document.getElementById('b' + (mbrNum + 5)).disabled = (val <= 10);
+            checkValue(val, mbrNum);
             const result = calcValues();
             displayResult(result);
         });
     });
 
-    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
+    document.addEventListener("dblclick", function(e){ e.preventDefault(); }, { passive: false });
 }
 
 function incrementValue(value) {
+    if (value < minVal - 5) value = minVal - 5;
     const res = Math.floor(value / 5) * 5 + 5;
     return res;
 }
 
 function decrementValue(value) {
+    if (value > maxVal + 5) value = maxVal + 5;
     const res = Math.ceil(value / 5) * 5 - 5;
     return res;
+}
+
+function checkValue(value, num) {
+    if (num >= 5) num -= 5;
+    document.getElementById('b' + num).disabled = (value >= maxVal);
+    document.getElementById('b' + (num + 5)).disabled = (value <= minVal);
 }
 
 function calcValues() {
